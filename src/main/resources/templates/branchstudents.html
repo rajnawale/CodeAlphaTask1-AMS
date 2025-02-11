@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Students of Branch</title>
+</head>
+<body>
+    <h1>Students of Branch: <span th:text="${branchName}"></span></h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>StudentId</th>
+                <th>StudentName</th>
+                <th>BranchName</th>
+                <th>Attendance</th>
+                
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="studentLists : ${studentLists}">
+            <td th:text="${studentLists.id}"></td>
+            <td th:text="${studentLists.name}"></td>
+            <td th:text="${studentLists.className}"></td>
+            <td th:text="${studentLists.attendence != null ? (studentLists.attendence ? 'Present' : 'Absent') : 'Absent'}"></td>
+			</tr>
+            
+        </tbody>
+    </table>
+    
+    
+    <form action="studentform" method="post">
+    <label>Student Id</label>
+    <input type="text" name="id" placeholder="Give Id" required><br><br>
+    <label>Student Name</label>
+    <input type="text" name="name" placeholder="Enter name" required><br><br>
+    <label>Branch Name</label>
+    <input type="text" name="className" placeholder="Give Branch Name" required><br><br>
+    <button>Submit</button>
+    
+    </form>
+</body>
+</html>

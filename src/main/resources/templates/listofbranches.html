@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Branch List</title>
+</head>
+<body>
+    <h1>Branch List</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>BranchId</th>
+                <th>BranchName</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="branch : ${branchDetails}">
+                <td th:text="${branch.branchId}"></td>
+                <td>
+                    <a th:href="@{/branch/{name}/students(name=${branch.branchName})}" th:text="${branch.branchName}"></a>
+                </td>
+            </tr>
+        </tbody>
+    </table><br><br>
+    <h2>Add new Branch</h2>
+    <form action="branchform">
+    
+    <label>BranchId</label>
+    <input type="text" name="branchId"  placeholder="Give id" required><br><br>
+    <label>BranchName</label>
+    <input type="text" name="branchName" placeholder="Give name" required><br>
+    <button>Submit</button>
+    
+    </form>
+    
+    <h2>Add New Student</h2>
+    <form action="studentform" method="post">
+    <label>Student Id</label>
+    <input type="text" name="id" placeholder="Give Id" required><br><br>
+    <label>Student Name</label>
+    <input type="text" name="name" placeholder="Enter name" required><br><br>
+    <label>Branch Name</label>
+    <input type="text" name="className" placeholder="Give Branch Name" required><br><br>
+    <button>Submit</button>
+    
+    </form>
+    
+    
+</body>
+</html>
